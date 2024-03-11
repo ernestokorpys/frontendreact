@@ -1,0 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+.empty{
+    height: 20px;
+    width: 100%;
+}
+
+
+body {
+    margin: 0;
+    /* background-image: radial-gradient(circle at 56.1% 27.25%, #fff9ff 0, #dcd0ff 50%, #b1a9e3 100%);*/
+    background-image: linear-gradient(195deg, #fff0ff 0, #ffddff 25%, #ecc9f9 50%, #d7b5ec 75%, #c3a4e1 100%);
+     
+    /* background-image: radial-gradient(circle at 35.22% 32.38%, #001326 0, #001229 5.56%, #00112b 11.11%, #000f2d 16.67%, #000d2e 22.22%, #000b2e 27.78%, #00082e 33.33%, #00052e 38.89%, #00032d 44.44%, #03002b 50%, #0e0029 55.56%, #150026 61.11%, #1b0023 66.67%, #1f0020 72.22%, #23001c 77.78%, #250019 83.33%, #270014 88.89%, #29000f 94.44%, #2b0007 100%); */
+    font-family: "Recursive", sans-serif;
+    display: grid;
+    color:rgb(0, 0, 0);
+    
+  }
+
+  

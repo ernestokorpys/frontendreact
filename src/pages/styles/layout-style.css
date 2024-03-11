@@ -1,0 +1,62 @@
+/* --------------------Barra superior-------------------- */
+header {
+    /*  backdrop-filter: blur(10px);*/
+    background-color: #2b0a57;
+}
+.logo-style{
+    width: 80px; 
+    height: auto;
+    padding: 10px;
+}
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: auto;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 2px;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.page-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding: 0;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.page-header li {
+    padding: 0rem 1.1rem;
+    float: left;
+}
+
+.page-header li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: .7px;
+}
+
+li a:hover {
+    color: #C8363E;
+    transition: all .3s ease-in-out
+}
+
+
+
+
+

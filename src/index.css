@@ -1,0 +1,4 @@
+.nav-bar-homepage ul li {
+  display: inline; /* Elimina el punto que saldria delante del li de la lista */
+  
+}
