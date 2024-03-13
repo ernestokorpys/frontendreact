@@ -1,0 +1,27 @@
+.product-list{
+  display: flex;
+  justify-content: space-around;
+}
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product h2 {
+  margin: 0;
+}
+
+.product p {
+  margin: 0;
+  font-weight: bold;
+}

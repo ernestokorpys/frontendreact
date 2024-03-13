@@ -1,52 +1,52 @@
-
-import PropTypes from "prop-types";
 import "./styles/layout-style.css";
-import logo from "./images/LogoErne2.png"; 
+import logo from "./images/LogoErne2.png";
 import { Link } from "react-router-dom";
 
 
-const PageSection = ({ sectionList }) => {
-  // Función para transformar el nombre
-  const transformName = (name) => {
-    return name
-      .split("-") // Divide la cadena en un array de palabras
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitaliza cada palabra
-      .join(" "); // Une las palabras con espacios
+const Layout = () => {
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/api/logout`,
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+
+      if (response.ok) {
+        localStorage.setItem("isLogin", false);
+        console.log(localStorage.getItem("isLogin"));
+        window.location.reload(); // Recargar la página
+        console.log("Log out Successfully!!!");
+      } else {
+        // Manejar errores de logout
+      }
+    } catch (error) {
+      // Manejar errores de red
+    }
   };
 
-  return (
-    <ul>
-      {sectionList.map((name, index) => {
-        const formattedName = transformName(name);
-        return (
-          <li key={index}>
-            {" "}
-            {/* key= index. Not nesesarie, index must be a unique number */}
-            <Link to={`/${name}`}>{formattedName}</Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
-//prop validation. To ensure that the expected props are passed to the componente
-PageSection.propTypes = {
-  sectionList: PropTypes.arrayOf(PropTypes.string).isRequired, // Prop validation
-};
-
-const section_list = ["home", "products", "login"];
-
-
-const Layout = () => {
   return (
     <header>
       <nav className="page-header">
         <div className="logo">
-           <img className="logo-style" src={logo} alt="logoErne" /> 
-            <Link to={"/home"}>Clear Mind.</Link>
+          <img className="logo-style" src={logo} alt="logoErne" />
+          <Link to={"/home"}>Clear Mind.</Link>
         </div>
         <ul>
-          <PageSection sectionList={section_list} />
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+          <button onClick={handleLogout}>Logout</button>
+          </li>
         </ul>
       </nav>
     </header>
