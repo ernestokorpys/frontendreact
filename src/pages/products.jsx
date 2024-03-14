@@ -1,5 +1,6 @@
 import "./styles/product-style.css";
 import { useState, useEffect } from "react";
+import ShowShopCar from "../components/shopcar.jsx"
 
 const GetProducts = () => {
   const [products, setProducts] = useState([]);
@@ -7,8 +8,6 @@ const GetProducts = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const page = parseInt(urlParams.get("page")) || 1;
-
-
     fetch(
       `${import.meta.env.VITE_REACT_APP_API_URL}/api/products?page=${page}`,
       {
@@ -22,9 +21,36 @@ const GetProducts = () => {
       })
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
+  console.log(products)
+  const handleShopCar = async (productID, productName) => {
+    try {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/api/addshopcar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ productID }),
+            credentials: 'include'
+        });
+        console.log(JSON.stringify({ productID }));
+        if (response.ok) {
+            console.log(productName + ": " + "Item agregado al carrito");
+        } else {
+            const responseData = await response.json();
+            if (responseData.error) {
+                console.error(responseData.error);
+            } else {
+                console.error("Error desconocido al añadir producto");
+            }
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+};
 
   return (
     <div>
+      < ShowShopCar/>
       <h1>Products</h1>
       <div  className="product-list">
         {products.map((product) => (
@@ -32,8 +58,10 @@ const GetProducts = () => {
             <img src={product.Picture} alt={product.ProductName} className="product-image"/>
             <h2 className="product-title">{product.ProductName}</h2>
             <p className="product-price">Cost: {product.Cost}</p>
+            <button onClick={() => handleShopCar(product.ID, product.ProductName)}>Add to cart</button>
           </article>
         ))}
+
       </div>
     </div>
   );
